@@ -90,4 +90,4 @@ foldersRouter.delete('/:id', (req, res, next) => {
 });
    
 
-module.exports = foldersRoute;
+module.exports = foldersRouter;
