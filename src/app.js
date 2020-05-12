@@ -7,10 +7,10 @@ const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 
 const app = express();
+const foldersRouter = require('./folders/folders-router');
+const notesRouter = require('./notes/notes-router');
 
-const morganOption = (NODE_ENV === 'production')
-  ? 'tiny'
-  : 'common';
+const morganOption = NODE_ENV === 'production' ? 'tiny' : 'common';
 
 // set up middleware
 app.use(morgan(morganOption));
@@ -21,6 +21,9 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.status(200).send('Hello, world!');
 });
+
+app.use(foldersRouter);
+app.use(notesRouter);
 
 // error handling
 // eslint-disable-next-line no-unused-vars
