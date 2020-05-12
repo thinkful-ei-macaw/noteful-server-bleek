@@ -30,7 +30,7 @@ app.use(notesRouter);
 const errorHandler = (error, req, res, next) => {
   let response;
   if (NODE_ENV === 'production') {
-    response = { error: { message: 'Server error' } };
+    response = { message: error.message, error };
   } else {
     response = { message: error.message, error };
   }
